@@ -9,10 +9,12 @@
 
 <body>
 
-<div id="login">
-  <h2>GockLine</h2>
+<!-- LOGIN -->
+<div id="login" class="card">
+  <h1>GockLine</h1>
+  <p class="sub">Вход по коду из Telegram</p>
 
-  <input id="code" placeholder="Код из Telegram">
+  <input id="code" placeholder="6-значный код">
 
   <button onclick="login()">Войти</button>
 
@@ -21,10 +23,52 @@
   </button>
 </div>
 
+<!-- APP -->
 <div id="app" class="hidden">
-  <h2>Добро пожаловать в GockLine</h2>
+
+  <!-- HEADER -->
+  <header>
+    <span class="logo">GockLine</span>
+    <button onclick="openProfile()">👤</button>
+  </header>
+
+  <!-- CHAT LIST -->
+  <div id="chatList">
+    <div class="chatItem" onclick="openChat('@test')">
+      <div class="avatar"></div>
+      <div class="info">
+        <b>@test</b>
+        <small>Онлайн</small>
+      </div>
+      <span class="fire">🔥 3</span>
+    </div>
+  </div>
+</div>
+
+<!-- CHAT -->
+<div id="chat" class="hidden">
+  <header>
+    <button onclick="backMain()">←</button>
+    <span id="chatTitle"></span>
+  </header>
+
+  <div id="messages"></div>
+
+  <div class="inputBar">
+    <input id="text" placeholder="Сообщение">
+    <button onclick="sendText()">➤</button>
+  </div>
+</div>
+
+<!-- PROFILE -->
+<div id="profile" class="hidden card">
+  <h2>Профиль</h2>
+  <input placeholder="Username (@username)">
+  <input placeholder="Ник">
+  <textarea placeholder="Bio"></textarea>
+  <button onclick="closeProfile()">Сохранить</button>
 </div>
 
 <script src="index.js"></script>
 </body>
-</html>
+  </html>
