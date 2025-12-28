@@ -1,54 +1,30 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>GockLine</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GockLine</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- LOGIN -->
-<div id="login" class="screen">
-  <div class="login-box">
-    <h1>GockLine</h1>
-    <input id="tokenInput" placeholder="Введите токен" />
-    <button onclick="enter()">Войти</button>
-  </div>
+<div id="login">
+  <h2>GockLine</h2>
+
+  <input id="code" placeholder="Код из Telegram">
+
+  <button onclick="login()">Войти</button>
+
+  <button class="tg" onclick="openTG()">
+    Получить код в Telegram
+  </button>
 </div>
 
-<!-- MAIN -->
-<div id="app" class="screen hidden">
-  <header class="top">
-    <span>Чаты</span>
-  </header>
-
-  <div class="chat-list">
-    <div class="chat-item" onclick="openChat('user123')">
-      <span class="nick">@user123</span>
-    </div>
-  </div>
-</div>
-
-<!-- CHAT -->
-<div id="chat" class="screen hidden">
-  <header class="top">
-    <button class="back" onclick="backMain()">←</button>
-
-    <div id="chatTitle">
-      <span id="chatNick">User</span>
-      <span id="fire" class="hidden">🔥 2</span>
-    </div>
-  </header>
-
-  <div id="messages" class="messages"></div>
-
-  <div class="inputBox">
-    <input id="text" placeholder="Сообщение..." />
-    <button onclick="sendMessage()">➤</button>
-  </div>
+<div id="app" class="hidden">
+  <h2>Добро пожаловать в GockLine</h2>
 </div>
 
 <script src="index.js"></script>
 </body>
-  </html>
+</html>
