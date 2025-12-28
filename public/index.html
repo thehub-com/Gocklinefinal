@@ -1,75 +1,54 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>GockLine</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- UI как TG -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ===== AUTH ===== -->
-<div id="auth" class="screen active">
-  <div class="auth-box">
+<!-- LOGIN -->
+<div id="login" class="screen">
+  <div class="login-box">
     <h1>GockLine</h1>
-    <p>Вход через Telegram</p>
-
-    <input id="username" placeholder="@username">
-    <button onclick="login()">Войти</button>
-
-    <div class="auth-anim"></div>
+    <input id="tokenInput" placeholder="Введите токен" />
+    <button onclick="enter()">Войти</button>
   </div>
 </div>
 
-<!-- ===== APP ===== -->
-<div id="app" class="screen">
-
-  <!-- HEADER -->
-  <header>
-    <span id="profileBtn" onclick="openProfile()">👤</span>
-    <input placeholder="Поиск">
+<!-- MAIN -->
+<div id="app" class="screen hidden">
+  <header class="top">
+    <span>Чаты</span>
   </header>
 
-  <!-- CHAT LIST -->
-  <div id="chatList">
-    <div class="chat-item" onclick="openChat('@test')">
-      <span>@test</span>
-      <small class="fire">🔥 3</small>
+  <div class="chat-list">
+    <div class="chat-item" onclick="openChat('user123')">
+      <span class="nick">@user123</span>
     </div>
   </div>
-
 </div>
 
-<!-- ===== CHAT ===== -->
-<div id="chat" class="screen">
-  <header>
-    <button onclick="back()">←</button>
-    <span id="chatTitle">@test</span>
+<!-- CHAT -->
+<div id="chat" class="screen hidden">
+  <header class="top">
+    <button class="back" onclick="backMain()">←</button>
+
+    <div id="chatTitle">
+      <span id="chatNick">User</span>
+      <span id="fire" class="hidden">🔥 2</span>
+    </div>
   </header>
 
-  <div id="messages"></div>
+  <div id="messages" class="messages"></div>
 
-  <div id="inputBar">
-    <input id="msgInput" placeholder="Сообщение">
-    <button onclick="sendMsg()">➤</button>
-  </div>
-</div>
-
-<!-- ===== PROFILE ===== -->
-<div id="profile" class="screen">
-  <header>
-    <button onclick="closeProfile()">←</button>
-    <span>Профиль</span>
-  </header>
-
-  <div class="profile-box">
-    <h2 id="profileName">@username</h2>
-    <p>Онлайн</p>
+  <div class="inputBox">
+    <input id="text" placeholder="Сообщение..." />
+    <button onclick="sendMessage()">➤</button>
   </div>
 </div>
 
 <script src="index.js"></script>
 </body>
-      </html>
+  </html>
