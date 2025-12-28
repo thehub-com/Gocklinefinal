@@ -1,45 +1,73 @@
-function openTG(){
-  window.open("https://t.me/gock_registration_bot","_blank");
+/* ================== STATE ================== */
+let currentUser = null;
+
+/* ================== LOGIN ================== */
+async function login(){
+  const code = document.getElementById("code").value.trim();
+  if(!code){
+    alert("Введите код");
+    return;
+  }
+
+  try{
+    const r = await fetch("/login",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({ code })
+    });
+
+    if(!r.ok){
+      alert("Неверный код");
+      return;
+    }
+
+    const data = await r.json();
+    currentUser = data.user;
+
+    document.getElementById("loginBox").classList.add("hidden");
+    document.getElementById("app").classList.remove("hidden");
+
+    document.getElementById("userName").innerText =
+      currentUser.username || "User";
+
+  }catch(e){
+    alert("Ошибка сервера");
+    console.error(e);
+  }
 }
 
-function login(){
-  const code=document.getElementById("code").value.trim();
-  if(!code) return alert("Введите код");
-
-  loginBox().style.display="none";
-  app().classList.remove("hidden");
+/* ================== SEARCH ================== */
+function searchChats(){
+  const q = document.getElementById("search").value.toLowerCase();
+  document.querySelectorAll(".chatItem").forEach(el=>{
+    el.style.display = el.innerText.toLowerCase().includes(q)
+      ? "flex"
+      : "none";
+  });
 }
 
-function openChat(nick){
-  app().classList.add("hidden");
-  chat().classList.remove("hidden");
-  chatTitle.innerText=nick;
-}
-
-function backMain(){
-  chat().classList.add("hidden");
-  app().classList.remove("hidden");
-}
-
-function sendText(){
-  if(!text.value) return;
-  const m=document.createElement("div");
-  m.className="msg me";
-  m.innerText=text.value;
-  messages.appendChild(m);
-  text.value="";
-}
-
+/* ================== PROFILE ================== */
 function openProfile(){
-  profile().classList.remove("hidden");
+  document.getElementById("profile").classList.remove("hidden");
+  document.getElementById("profileName").innerText =
+    currentUser?.username || "User";
 }
 
 function closeProfile(){
-  profile().classList.add("hidden");
+  document.getElementById("profile").classList.add("hidden");
 }
 
-/* shortcuts */
-const loginBox=()=>document.getElementById("login");
-const app=()=>document.getElementById("app");
-const chat=()=>document.getElementById("chat");
-const profile=()=>document.getElementById("profile");
+/* ================== LOGOUT ================== */
+function logout(){
+  currentUser = null;
+  document.getElementById("app").classList.add("hidden");
+  document.getElementById("loginBox").classList.remove("hidden");
+  document.getElementById("code").value = "";
+}
+
+/* ================== UI HELPERS ================== */
+function $(id){
+  return document.getElementById(id);
+      }
