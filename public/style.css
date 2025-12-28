@@ -1,0 +1,286 @@
+:root{
+  --bg:#0f1224;
+  --bg2:#15193a;
+  --panel:#1b2050;
+  --panel2:#232975;
+
+  --accent:#7b8cff;
+  --accent2:#c77dff;
+  --accent3:#4fffdc;
+
+  --danger:#ff5c5c;
+  --ok:#4dff88;
+
+  --text:#ffffff;
+  --muted:#9aa3c7;
+}
+
+/* RESET */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:-apple-system,BlinkMacSystemFont,Roboto,Inter,sans-serif;
+}
+
+body{
+  background:linear-gradient(180deg,var(--bg),var(--bg2));
+  color:var(--text);
+  height:100vh;
+  overflow:hidden;
+}
+
+.hidden{display:none}
+
+/* ===== BUTTONS ===== */
+button{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border:none;
+  border-radius:14px;
+  padding:10px 16px;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s;
+}
+button:active{transform:scale(.96)}
+
+/* ===== LOGIN ===== */
+#login{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:24px;
+  gap:12px;
+}
+
+#login h2{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+#login input{
+  padding:14px;
+  border-radius:14px;
+  border:none;
+  background:var(--panel2);
+  color:#fff;
+  font-size:15px;
+}
+
+#login a{
+  text-align:center;
+  color:var(--accent);
+  text-decoration:none;
+  margin-top:6px;
+}
+
+/* ===== MAIN ===== */
+#app{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+header{
+  padding:12px;
+  background:linear-gradient(135deg,var(--panel),var(--panel2));
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+header input{
+  flex:1;
+  padding:10px 12px;
+  border-radius:12px;
+  border:none;
+  background:#10133a;
+  color:#fff;
+}
+
+/* ===== CHAT LIST ===== */
+#chatList{
+  flex:1;
+  overflow:auto;
+}
+
+.chatItem{
+  padding:14px 16px;
+  border-bottom:1px solid #2b2f6a;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.chatItem:hover{
+  background:#181d48;
+}
+
+.chatItem .top{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.nick{
+  font-weight:600;
+}
+
+.badge{
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  font-size:11px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.badge.verified{
+  background:linear-gradient(135deg,#4fc3ff,#7b8cff);
+}
+
+.badge.admin{
+  background:linear-gradient(135deg,#ffd166,#ff9f1c);
+  color:#000;
+}
+
+.fire{
+  margin-left:auto;
+  color:#ff7a18;
+  font-size:14px;
+}
+
+.chatItem small{
+  color:var(--muted);
+}
+
+/* ===== CHAT ===== */
+#chat{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+#chatHeader{
+  padding:12px;
+  background:linear-gradient(135deg,var(--panel),var(--panel2));
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+#chatHeader span{
+  font-weight:600;
+}
+
+/* ===== MESSAGES ===== */
+#messages{
+  flex:1;
+  padding:14px;
+  overflow:auto;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.msg{
+  max-width:75%;
+  background:var(--panel2);
+  padding:10px 12px;
+  border-radius:14px;
+  word-wrap:break-word;
+  position:relative;
+}
+
+.msg.me{
+  margin-left:auto;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+}
+
+.time{
+  font-size:10px;
+  opacity:.6;
+  text-align:right;
+  margin-top:4px;
+}
+
+/* ===== MESSAGE MENU ===== */
+.msgMenu{
+  position:absolute;
+  top:-6px;
+  right:0;
+  background:#000c;
+  border-radius:12px;
+  overflow:hidden;
+  z-index:10;
+}
+
+.msgMenu div{
+  padding:8px 14px;
+  border-bottom:1px solid #333;
+  font-size:14px;
+}
+
+.msgMenu div:last-child{border:none}
+
+/* ===== INPUT ===== */
+#inputBar{
+  padding:10px;
+  background:linear-gradient(135deg,var(--panel),var(--panel2));
+  display:flex;
+  gap:8px;
+}
+
+#inputBar input{
+  flex:1;
+  padding:12px;
+  border-radius:14px;
+  border:none;
+  background:#10133a;
+  color:#fff;
+}
+
+/* ===== PROFILE ===== */
+#profile{
+  height:100vh;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.avatar{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  margin:0 auto;
+  background:linear-gradient(135deg,var(--accent),var(--accent3));
+}
+
+#profile input,
+#profile textarea{
+  padding:12px;
+  border-radius:14px;
+  border:none;
+  background:var(--panel2);
+  color:#fff;
+}
+
+#profile textarea{
+  resize:none;
+  height:80px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes glow{
+  0%{box-shadow:0 0 0 rgba(0,0,0,0)}
+  50%{box-shadow:0 0 18px rgba(123,140,255,.5)}
+  100%{box-shadow:0 0 0 rgba(0,0,0,0)}
+}
+
+.msg.me{
+  animation:glow 3s infinite;
+                             }
