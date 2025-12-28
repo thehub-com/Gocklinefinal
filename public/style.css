@@ -150,3 +150,44 @@ header{
   gap:8px;
   background:#1c1f3a;
 }
+/* ===== BADGES ===== */
+#userName{
+  font-weight:600;
+}
+
+#userName span{
+  margin-left:4px;
+}
+
+/* ===== STREAK ===== */
+#fire{
+  color:#ff7a00;
+  font-weight:700;
+  animation: firePulse 1.2s infinite;
+}
+
+@keyframes firePulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.2)}
+  100%{transform:scale(1)}
+}
+
+/* ===== MESSAGES ===== */
+.msg{
+  max-width:70%;
+  padding:10px 14px;
+  margin:6px;
+  border-radius:14px;
+  background:#f1f1f1;
+}
+
+.msg.me{
+  background:#dff4ff;
+  margin-left:auto;
+}
+
+.time{
+  font-size:10px;
+  opacity:.6;
+  margin-top:4px;
+  }
